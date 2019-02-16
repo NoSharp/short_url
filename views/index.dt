@@ -1,0 +1,22 @@
+doctype html
+html
+    head
+        title Sharp.ly
+    body
+        h1 Sharp.ly
+        p .
+
+        form(action="/shortner", method="POST")
+            p
+                label(for="url") URL:
+                input#url(type="text", name="url")
+                label(for="name") name:
+                input#url(type="text", name="name")
+            button(type="submit") Shorten
+
+
+        form(action="/goto", method="GET")
+            p
+                label(for="id") EnterTarget:
+                input#id(type="text", name="id")
+            button(type="submit") Shorten
