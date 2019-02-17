@@ -1,53 +1,14 @@
 import vibe.vibe;
 import std.stdio;
-
+import Shortner;
+import vibe.vibe;
+import Shorten;
 
 /**
 Routes:
 	/shrink (returns .dt with url)
-	/url (returns website.)
+	/:url (returns website.)
 **/
-
-import  vibe.vibe;
-import Shorten;
-
-
-final class Shortner{
-    public:
-        Shorten[] shortens;
-        string url;
-        string name;
-
-    void get() {
-		render!("index.dt");
-	}
-
-    @path("/shortner")
-    void postShortner(string url, string name){
-        auto shorten = new Shorten(url, name);
-        this.shortens ~= shorten;
-        logInfo("got called with url: %s", url);
-    }
-
-	void get()
-
-	@path("/:id")
-    void index(string _id)
-	{
-		logInfo("got called with A id: %s", _id);
-		foreach (Shorten shorte ; shortens){
-			logInfo(shorte.url);
-			if(shorte.target == _id){
-				redirect(shorte.url);
-				return;
-			}
-		}
-		logInfo("Found none. %s", _id);
-	}
-
-}
-
-
 void main()
 {
 	auto router = new URLRouter;
